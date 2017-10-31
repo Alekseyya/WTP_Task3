@@ -11,3 +11,5 @@ C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\DAL.pdb
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Model.pdb
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Dapper.xml
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\EntityFramework.xml
+C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Ninject.dll
+C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Ninject.xml

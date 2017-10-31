@@ -15,8 +15,8 @@ namespace Hosting
             {
                 host.Open();
                 Console.WriteLine(DateTime.Now.ToString());
-                host.Close();
                 Console.ReadLine();
+                host.Close();
             }
         }
     }

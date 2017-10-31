@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.DataContract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,5 +14,21 @@ namespace Services
     {
         [OperationContract]
         string GetMessage(string name);
+
+        [OperationContract]
+        List<ClientContract> GetAllClients();
+
+        [OperationContract]
+        void AddClient(ClientContract client);
+
+        [OperationContract]
+        void DeleteClient(int id);
+
+        [OperationContract]
+        ClientContract GetClientById(int id);
+
+        [OperationContract]
+        void UpdateClient(ClientContract client);
+
     }
 }

@@ -14,3 +14,5 @@ C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\EntityFramework.xml
 C:\Work\Andersen\WPF_Tast3\Hosting\obj\Debug\Hosting.csprojResolveAssemblyReference.cache
 C:\Work\Andersen\WPF_Tast3\Hosting\obj\Debug\Hosting.exe
 C:\Work\Andersen\WPF_Tast3\Hosting\obj\Debug\Hosting.pdb
+C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Ninject.dll
+C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Ninject.xml

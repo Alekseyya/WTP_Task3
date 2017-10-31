@@ -80,6 +80,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SDK.Expression.Blend.1.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -115,6 +117,11 @@
     <Compile Include="IoC\IoC.cs" />
     <Compile Include="PropertyChangedEvent.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="Service References\ClientService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Tree\BinaryTree.cs" />
     <Compile Include="Tree\BinaryTreeNode.cs" />
     <Compile Include="Tree\Node.cs" />
@@ -172,11 +179,22 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Model.DataContract.ClientContract.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\ClientService\ClientService.wsdl" />
+    <None Include="Service References\ClientService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -186,8 +204,12 @@
       <Project>{2CFA7035-EE03-49C7-B535-6114AA85D56C}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Hosting\Hosting.csproj">
+      <Project>{89de7279-e002-43df-b457-e797772954ad}</Project>
+      <Name>Hosting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{140FAE61-0B6C-40D9-88F2-39432994D3F1}</Project>
+      <Project>{140fae61-0b6c-40d9-88f2-39432994d3f1}</Project>
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
@@ -199,6 +221,24 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ClientService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

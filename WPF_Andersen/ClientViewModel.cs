@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using DAL.Repositories.Base;
+using Model.DataContract;
 
 namespace WPF_Andersen
 {
@@ -198,6 +199,7 @@ namespace WPF_Andersen
         {
             //Поставить свойство возвращающее
             //visibility to bool converter
+            
             Stopwatch sw = new Stopwatch();
             sw.Start();
             await LoadAsync();
@@ -208,7 +210,6 @@ namespace WPF_Andersen
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
-            //MessageBox.Show(elapsedTime);
         }
 
         private async Task LoadAsync()
@@ -222,9 +223,23 @@ namespace WPF_Andersen
                     return;
                 }
                 var listClients = new List<Client>();
-                using (IClientRepository repo = IoC.IoC.Get<IClientRepository>())
+                //using (IClientRepository repo = IoC.IoC.Get<IClientRepository>())
+                //{
+                //    listClients = repo.GetList().ToList();
+                //}
+
+                using (var service = new ClientService.ClientServiceClient())
                 {
-                    listClients = repo.GetList().ToList();
+                    var contractClients = service.GetAllClients();
+                    foreach (var client in contractClients)
+                    {
+                        listClients.Add(new Client()
+                        {
+                            FirstName = client.FirstName,
+                            LastName = client.LastName,
+                            Age = client.Age
+                        });
+                    }
                 }
                 Clients = new ObservableCollection<Client>(listClients);
             }, token);
