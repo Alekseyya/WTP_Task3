@@ -1,0 +1,16 @@
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\ViewModel.dll.config
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\ViewModel.dll
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\ViewModel.pdb
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\EntityFramework.dll
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\Model.dll
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\Model.pdb
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\EntityFramework.xml
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\obj\Debug\ViewModel.dll
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\obj\Debug\ViewModel.pdb
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\Ninject.dll
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\Ninject.xml
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\DAL.dll
+C:\Work\Andersen\WPF\WPF_Andersen\ViewModel\bin\Debug\DAL.pdb
