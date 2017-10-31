@@ -17,6 +17,5 @@ C:\Work\Andersen\WPF_Tast3\Model\bin\Debug\EntityFramework.SqlServer.dll
 C:\Work\Andersen\WPF_Tast3\Model\bin\Debug\Dapper.xml
 C:\Work\Andersen\WPF_Tast3\Model\bin\Debug\EntityFramework.xml
 C:\Work\Andersen\WPF_Tast3\Model\bin\Debug\EntityFramework.SqlServer.xml
-C:\Work\Andersen\WPF_Tast3\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\Work\Andersen\WPF_Tast3\Model\obj\Debug\Model.dll
 C:\Work\Andersen\WPF_Tast3\Model\obj\Debug\Model.pdb
