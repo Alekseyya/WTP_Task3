@@ -14,57 +14,75 @@ namespace DAL.Repositories
     public class ClientRepository : IClientRepository
     {
         
-        private readonly IDbConnection db;
-
+        //private readonly IDbConnection db;
+        private  readonly Singleton db;
         public ClientRepository()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DbContext"].ConnectionString;
-            db = new SqlConnection(connectionString);
+            db = Singleton.Instance();
+            //string connectionString = ConfigurationManager.ConnectionStrings["DbContext"].ToString();
+            //db = new SqlConnection(connectionString);
         }
         public void Create(Client client)
         {
-            var sqlQuery = "INSERT INTO Clients (FirstName, LastName, Age) VALUES(@FirstName, @LastName, @Age);" +
-                           "SELECT CAST(SCOPE_IDENTITY() as int)";
-            int? clientId = db.Query<int>(sqlQuery, client).FirstOrDefault();
-            client.Id = (int)clientId;
-
+            using (var connection = db.GetOpenConnection())
+            {
+                var sqlQuery = "INSERT INTO Clients (FirstName, LastName, Age) VALUES(@FirstName, @LastName, @Age);" +
+                               "SELECT CAST(SCOPE_IDENTITY() as int)";
+                int? clientId = connection.Query<int>(sqlQuery, client).FirstOrDefault();
+                client.Id = (int)clientId;
+            }
         }
 
         public void Delete(int id)
         {
-            var sqlQuery = "DELETE FROM Clients WHERE Id = @id";
-            db.Execute(sqlQuery, new { id });
+            using (var conn = db.GetOpenConnection())
+            {
+                var sqlQuery = "DELETE FROM Clients WHERE Id = @id";
+                conn.Execute(sqlQuery, new { id });
+            }
         }
 
         public bool HasClientOnDatabase(Client client)
         {
-            var findClient = db.Query<Client>("Select * From Clients WHERE " +
-                                  "FirstName = @FirstName And LastName = @LastName " +
-                                  "and Age =@Age", new { FirstName = client.FirstName, LastName = client.LastName, Age = client.Age });
-            if(findClient.Count()==0)
-                return false;
-
-            return true;
+            using (var conn = db.GetOpenConnection())
+            {
+                var findClient = conn.Query<Client>("Select * From Clients WHERE " +
+                                      "FirstName = @FirstName And LastName = @LastName " +
+                                      "and Age =@Age", new { FirstName = client.FirstName, LastName = client.LastName, Age = client.Age });
+                if (findClient.Count() == 0)
+                    return false;
+                return true;
+            }
         }
 
         public Client GetItem(int id)
         {
-            Client client = db.Query<Client>("SELECT * FROM Clients WHERE Id = @id", new { id }).FirstOrDefault();
-            if (client != null)
-                return client;
-            return null;
+            using (var conn = db.GetOpenConnection())
+            {
+                Client client = conn.Query<Client>("SELECT * FROM Clients WHERE Id = @id", new { id }).FirstOrDefault();
+                if (client != null)
+                    return client;
+                return null;
+            }
         }
 
         public IEnumerable<Client> GetList()
         {
-            List<Client> clients = clients = db.Query<Client>("Select * from Clients").ToList(); 
+            List<Client> clients = new List<Client>();
+            using (var conn = db.GetOpenConnection())
+            {
+                clients = conn.Query<Client>("Select * from Clients").ToList();
+            }
             return clients;
         }
-        
+
         public void Update(Client client)
         {
-           var sqlQuery = "UPDATE Clients SET FirstName = @FirstName, LastName = @Lastname, Age = @Age WHERE Id = @Id";
-           db.Execute(sqlQuery, client);
+            using (var conn = db.GetOpenConnection())
+            {
+                var sqlQuery = "UPDATE Clients SET FirstName = @FirstName, LastName = @Lastname, Age = @Age WHERE Id = @Id";
+                conn.Execute(sqlQuery, client);
+            }
         }
 
         private bool disposed = false;
@@ -75,7 +93,7 @@ namespace DAL.Repositories
             {
                 if (disposing)
                 {
-                    db.Dispose();
+                    //db.Dispose();
                 }
             }
             this.disposed = true;

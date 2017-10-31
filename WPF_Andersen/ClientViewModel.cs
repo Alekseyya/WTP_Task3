@@ -223,11 +223,6 @@ namespace WPF_Andersen
                     return;
                 }
                 var listClients = new List<Client>();
-                //using (IClientRepository repo = IoC.IoC.Get<IClientRepository>())
-                //{
-                //    listClients = repo.GetList().ToList();
-                //}
-
                 using (var service = new ClientService.ClientServiceClient())
                 {
                     var contractClients = service.GetAllClients();

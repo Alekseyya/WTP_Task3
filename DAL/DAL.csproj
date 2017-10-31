@@ -50,6 +50,7 @@
     <Compile Include="Repositories\Base\IBaseRepository.cs" />
     <Compile Include="Repositories\Base\IClientRepository.cs" />
     <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="SingletonDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

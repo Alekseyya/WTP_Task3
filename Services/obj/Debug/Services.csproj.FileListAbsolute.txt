@@ -5,11 +5,11 @@ C:\Work\Andersen\WPF_Tast3\Services\obj\Debug\Services.pdb
 C:\Work\Andersen\WPF_Tast3\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\DAL.dll
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Model.dll
-C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Dapper.dll
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\EntityFramework.dll
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\DAL.pdb
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Model.pdb
-C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Dapper.xml
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\EntityFramework.xml
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Ninject.dll
 C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Ninject.xml
+C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Dapper.dll
+C:\Work\Andersen\WPF_Tast3\Services\bin\Debug\Dapper.xml

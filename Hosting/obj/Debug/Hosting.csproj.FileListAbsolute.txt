@@ -4,15 +4,15 @@ C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Hosting.pdb
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\DAL.dll
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Model.dll
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Services.dll
-C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Dapper.dll
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\EntityFramework.dll
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\DAL.pdb
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Model.pdb
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Services.pdb
-C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Dapper.xml
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\EntityFramework.xml
 C:\Work\Andersen\WPF_Tast3\Hosting\obj\Debug\Hosting.csprojResolveAssemblyReference.cache
 C:\Work\Andersen\WPF_Tast3\Hosting\obj\Debug\Hosting.exe
 C:\Work\Andersen\WPF_Tast3\Hosting\obj\Debug\Hosting.pdb
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Ninject.dll
 C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Ninject.xml
+C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Dapper.dll
+C:\Work\Andersen\WPF_Tast3\Hosting\bin\Debug\Dapper.xml
