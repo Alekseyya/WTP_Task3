@@ -28,10 +28,10 @@ namespace WPF_Andersen.ClientService {
         System.Threading.Tasks.Task<Model.DataContract.ClientContract[]> GetAllClientsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddClient", ReplyAction="http://tempuri.org/IClientService/AddClientResponse")]
-        void AddClient(Model.DataContract.ClientContract client);
+        bool AddClient(Model.DataContract.ClientContract client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddClient", ReplyAction="http://tempuri.org/IClientService/AddClientResponse")]
-        System.Threading.Tasks.Task AddClientAsync(Model.DataContract.ClientContract client);
+        System.Threading.Tasks.Task<bool> AddClientAsync(Model.DataContract.ClientContract client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/DeleteClient", ReplyAction="http://tempuri.org/IClientService/DeleteClientResponse")]
         void DeleteClient(int id);
@@ -95,11 +95,11 @@ namespace WPF_Andersen.ClientService {
             return base.Channel.GetAllClientsAsync();
         }
         
-        public void AddClient(Model.DataContract.ClientContract client) {
-            base.Channel.AddClient(client);
+        public bool AddClient(Model.DataContract.ClientContract client) {
+            return base.Channel.AddClient(client);
         }
         
-        public System.Threading.Tasks.Task AddClientAsync(Model.DataContract.ClientContract client) {
+        public System.Threading.Tasks.Task<bool> AddClientAsync(Model.DataContract.ClientContract client) {
             return base.Channel.AddClientAsync(client);
         }
         

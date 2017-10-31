@@ -19,7 +19,7 @@ namespace Services
         List<ClientContract> GetAllClients();
 
         [OperationContract]
-        void AddClient(ClientContract client);
+        bool AddClient(ClientContract client);
 
         [OperationContract]
         void DeleteClient(int id);

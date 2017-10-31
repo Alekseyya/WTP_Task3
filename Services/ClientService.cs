@@ -20,7 +20,7 @@ namespace Services
         //    _clientRepo = new ClientRepository();
         //}
 
-        public void AddClient(ClientContract clientContract)
+        public bool AddClient(ClientContract clientContract)
         {
 
             //var client = new Client()
@@ -31,6 +31,7 @@ namespace Services
             //};
             //if(!_clientRepo.HasClientOnDatabase(client))
             //    _clientRepo.Create(client);
+            return true;
         }
 
         public void DeleteClient(int id)

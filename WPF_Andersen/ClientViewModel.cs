@@ -161,13 +161,19 @@ namespace WPF_Andersen
         {
             await Task.Run(() =>
             {
-                using (IClientRepository repo = IoC.IoC.Get<IClientRepository>())
+                bool flag = false;
+                using (var service = new ClientService.ClientServiceClient())
                 {
-                    if (!repo.HasClientOnDatabase(client))
-                        repo.Create(client);
-                    else
-                        MessageBox.Show("Такой пользователь уже существует");
+                    var clientContract = new ClientContract()
+                    {
+                        FirstName = client.FirstName,
+                        LastName = client.LastName,
+                        Age = client.Age
+                    };
+                   flag = service.AddClient(clientContract);
                 }
+                if(!flag)
+                    MessageBox.Show("Такой пользователь уже существует");
             });
         }
 
@@ -187,9 +193,11 @@ namespace WPF_Andersen
         {
             await Task.Run(() =>
             {
-                using (IClientRepository repo = IoC.IoC.Get<IClientRepository>())
+                var aa = client;
+                using (var service = new ClientService.ClientServiceClient())
                 {
-                    repo.Delete(client.Id);
+                    
+                    service.DeleteClient(client.Id);
                 }
             });
             Clients.Remove(client);
