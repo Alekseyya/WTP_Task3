@@ -15,7 +15,7 @@ namespace DAL.Repositories
     {
         
         //private readonly IDbConnection db;
-        private  readonly Singleton db;
+        private readonly Singleton db;
         public ClientRepository()
         {
             db = Singleton.Instance();

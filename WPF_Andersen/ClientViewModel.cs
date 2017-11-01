@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using DAL.Repositories.Base;
+
 using Model.DataContract;
 
 namespace WPF_Andersen
@@ -154,6 +154,7 @@ namespace WPF_Andersen
                 };
                // _clientTest.OnValidateProperty();
                 await AddMemberOnDatabase(client);
+                await Load();
             });
         }
         
@@ -205,9 +206,6 @@ namespace WPF_Andersen
        
         public async Task Load()
         {
-            //Поставить свойство возвращающее
-            //visibility to bool converter
-            
             Stopwatch sw = new Stopwatch();
             sw.Start();
             await LoadAsync();
@@ -250,10 +248,10 @@ namespace WPF_Andersen
 
         public void Open(object client)
         {
-            //var updateWindow = new UpdateWindow();
-            //var viewModel = new UpdateViewModel((Client)client);
-            //updateWindow.DataContext = viewModel;
-            //updateWindow.Show();
+            var updateWindow = new UpdateWindow();
+            var viewModel = new UpdateViewModel((Client)client);
+            updateWindow.DataContext = viewModel;
+            updateWindow.Show();
         }
         
     }

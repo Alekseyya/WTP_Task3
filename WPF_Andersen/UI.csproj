@@ -105,13 +105,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClientViewModel.cs" />
-    <Compile Include="ComboboxTreeView.xaml.cs">
-      <DependentUpon>ComboboxTreeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ComboItem.cs" />
-    <Compile Include="ComboTree.xaml.cs">
-      <DependentUpon>ComboTree.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\SimpleConverter.cs" />
     <Compile Include="IoC\IoC.cs" />
@@ -131,14 +124,6 @@
     <Compile Include="UpdateWindow.xaml.cs">
       <DependentUpon>UpdateWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="ComboboxTreeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ComboTree.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -200,10 +185,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{2CFA7035-EE03-49C7-B535-6114AA85D56C}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Hosting\Hosting.csproj">
       <Project>{89de7279-e002-43df-b457-e797772954ad}</Project>
       <Name>Hosting</Name>

@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
-using DAL.Repositories;
+﻿using System.Collections.Generic;
 using DAL.Repositories.Base;
 using Model.DataContract;
 using Model.Entities;
 
 namespace Services
 {
-    // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "ClientService" в коде и файле конфигурации.
     public class ClientService : IClientService
     {
         //private readonly IClientRepository _clientRepo;
@@ -22,21 +15,32 @@ namespace Services
 
         public bool AddClient(ClientContract clientContract)
         {
-
-            //var client = new Client()
-            //{
-            //    FirstName = clientContract.FirstName,
-            //    LastName = clientContract.LastName,
-            //    Age = clientContract.Age
-            //};
-            //if(!_clientRepo.HasClientOnDatabase(client))
-            //    _clientRepo.Create(client);
-            return true;
+            using (IClientRepository _clientRepo = IoC.IoC.Get<IClientRepository>())
+            {
+                var client = new Client()
+                {
+                    FirstName = clientContract.FirstName,
+                    LastName = clientContract.LastName,
+                    Age = clientContract.Age
+                };
+                if (!_clientRepo.HasClientOnDatabase(client))
+                {
+                    _clientRepo.Create(client);
+                    return true;
+                }
+                else
+                    return false;
+                
+            }
+            
         }
 
         public void DeleteClient(int id)
         {
-            //_clientRepo.Delete(id);
+            using (IClientRepository _clientRepo = IoC.IoC.Get<IClientRepository>())
+            {
+                _clientRepo.Delete(id);
+            }
         }
 
         public List<ClientContract> GetAllClients()
@@ -54,21 +58,26 @@ namespace Services
                     });
                 }
             }
-            
             return contractListClient;
         }
 
         public ClientContract GetClientById(int id)
         {
-            //var client = _clientRepo.GetItem(id);
-            //var contractClient = new ClientContract()
-            //{
-            //    FirstName = client.FirstName,
-            //    LastName = client.LastName,
-            //    Age = client.Age
-            //};
-            //return contractClient;
-            return null;
+            using (IClientRepository _clientRepo = IoC.IoC.Get<IClientRepository>())
+            {
+                var client = _clientRepo.GetItem(id);
+                if (client != null)
+                {
+                    var contractClient = new ClientContract()
+                    {
+                        FirstName = client.FirstName,
+                        LastName = client.LastName,
+                        Age = client.Age
+                    };
+                    return contractClient;
+                }
+                return null;
+            }
         }
 
         public string GetMessage(string name)
@@ -78,13 +87,16 @@ namespace Services
 
         public void UpdateClient(ClientContract clientContract)
         {
-            //var client = new Client()
-            //{
-            //    FirstName = clientContract.FirstName,
-            //    LastName = clientContract.LastName,
-            //    Age = clientContract.Age
-            //};
-            //_clientRepo.Update(client);
+            using (IClientRepository _clientRepo = IoC.IoC.Get<IClientRepository>())
+            {
+                var client = new Client()
+                {
+                    FirstName = clientContract.FirstName,
+                    LastName = clientContract.LastName,
+                    Age = clientContract.Age
+                };
+                _clientRepo.Update(client);
+            }
         }
     }
 }

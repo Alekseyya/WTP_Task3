@@ -1,6 +1,4 @@
-﻿using DAL.Repositories;
-using DAL.Repositories.Base;
-using Ninject;
+﻿using Ninject;
 
 namespace WPF_Andersen.IoC
 {
@@ -11,7 +9,7 @@ namespace WPF_Andersen.IoC
         static IoC()
         {
             _kernel = new StandardKernel();
-            _kernel.Bind<IClientRepository>().To<ClientRepository>().InTransientScope();
+            //_kernel.Bind<IClientRepository>().To<ClientRepository>().InTransientScope();
             //_kernel.bind.to.....
 
         }

@@ -33,8 +33,8 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
     </Window.Resources>
+    
     <Grid>
         <StackPanel>
             <DataGrid x:Name="DatabaseGrid" AutoGenerateColumns="False" SelectionMode="Single" ItemsSource ="{Binding Clients}" SelectedItem="{Binding SelectedClient}" MouseDoubleClick="DoubleMouseClickOnRowDataGrid">
@@ -48,24 +48,6 @@
                 <Button x:Name="UpdateButton" Content="Load" Width="60" Height="30" HorizontalAlignment="Left" Click="UpdateButton_Click"></Button>
                 <Button x:Name="CancelButton" Content="Cancel" Command="{Binding CancelCommand}" Width="30" Height="30" HorizontalAlignment="Center"></Button>
                 <Button x:Name="DeleteMemmberButton" Content="DeleteMember" Width="60" Height="30" HorizontalAlignment="Right" Command="{Binding DeleteMember}" CommandParameter="{Binding SelectedClient}"></Button>
-                <!--<Image Source="Resources/smile.png" Height="50" Width="50">
-                    <Image.RenderTransform>
-                        <RotateTransform x:Name="rotate"
-                                         CenterX="25"
-                                         CenterY="25"/>
-                    </Image.RenderTransform>
-                    <Image.Triggers>
-                        <EventTrigger RoutedEvent="Loaded">
-                            <BeginStoryboard>
-                                <Storyboard RepeatBehavior="Forever">
-                                    <DoubleAnimation Storyboard.TargetName="rotate"
-                                                     Storyboard.TargetProperty="Angle"
-                                                     By="360" Duration="0:0:1"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger>
-                    </Image.Triggers>
-                </Image>-->
             </Grid>
             <StackPanel x:Name="AddMemberPanel" Visibility="{Binding IsLoaded, Converter={StaticResource BoolToHiddenConverter}}">
                 <StackPanel HorizontalAlignment="Center">
