@@ -21,15 +21,11 @@
                 <TextBlock Margin="0 15 0 5">Age</TextBlock>
                 <TextBox Name="RenameAgeTextBox" Text="{Binding Age}"></TextBox>
             </StackPanel>
-            <Button Content="Update" HorizontalAlignment="Right" Margin="0 0 15 0">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Click">
-                        <cal:ActionMessage MethodName="Update">
-                        </cal:ActionMessage>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
+            <Button 
+                Content="Update"
+                cal:Message.Attach="[Event Click] = [Action Update]"
+                HorizontalAlignment="Right" Margin="0 0 15 0">
             </Button>
-        
         </StackPanel>
     </Grid>
 </Window>

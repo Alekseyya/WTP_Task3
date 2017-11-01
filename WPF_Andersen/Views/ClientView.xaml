@@ -36,10 +36,12 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    
-    <Grid>
+
+    <Grid><!--ItemsSource ="{Binding Clients}"-->
         <StackPanel>
-            <DataGrid x:Name="DatabaseGrid" AutoGenerateColumns="False" SelectionMode="Single" ItemsSource ="{Binding Clients}" SelectedItem="{Binding SelectedClient}" MouseDoubleClick="DoubleMouseClickOnRowDataGrid">
+            <DataGrid x:Name="Clients" AutoGenerateColumns="False" SelectionMode="Single"
+                       SelectedItem="{Binding SelectedClient}"
+                      MouseDoubleClick="DoubleMouseClickOnRowDataGrid">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding FirstName}" Header="FirstName" Width="100"></DataGridTextColumn>
                     <DataGridTextColumn Binding="{Binding LastName}" Header="LastName" Width="100"></DataGridTextColumn>
@@ -78,10 +80,12 @@
                     </StackPanel>
                 </StackPanel>
                 <Grid>
-                    <Button x:Name="AddClient" cal:Message.Attach="[Event Click] = [Action AddClient]"
-                            Content="Add" Width="30" Height="30" HorizontalAlignment="Center"
-                            Style="{StaticResource RedAndWhite}">
-                    </Button>
+                    <StackPanel>
+                        <Button x:Name="AddClient" cal:Message.Attach="[Event Click] = [Action AddClient]"
+                                Content="Add" Width="30" Height="30" HorizontalAlignment="Center"
+                                Style="{StaticResource RedAndWhite}">
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </StackPanel>
 

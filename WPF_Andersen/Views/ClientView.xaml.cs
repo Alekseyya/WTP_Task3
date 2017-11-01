@@ -46,8 +46,8 @@ namespace WPF_Andersen
 
         private void DoubleMouseClickOnRowDataGrid(object sender, MouseButtonEventArgs e)
         {
-            if (DatabaseGrid.SelectedItem == null) return;
-            var selectedClient = DatabaseGrid.SelectedItem;
+            if (Clients.SelectedItem == null) return;
+            var selectedClient = Clients.SelectedItem;
             var viewModel = DataContext as ClientViewModel;
             viewModel.Open(selectedClient);
         }
