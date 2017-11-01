@@ -94,6 +94,7 @@ namespace WPF_Andersen
             await AddMemberOnDatabase(client);
             await Load();
         }
+        
 
         public async void DeleteClient(Client selectedClient)
         {
