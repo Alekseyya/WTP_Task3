@@ -28,12 +28,15 @@ namespace WPF_Andersen
         private Client _newClient;
 
         private bool _isLoaded; //--- нужен для обновления ссылки
+        private readonly IWindowManager _windowManager;
 
         public ClientViewModel()
         {
             ResetSourceAndToken();
             NewClient = new Client();
             NewClient.OnValidateProperty += new ValidateProperty(ValidateFirstName);
+
+            _windowManager = new WindowManager();
 
         }
         public Client NewClient
@@ -221,10 +224,7 @@ namespace WPF_Andersen
 
         public void Open(object client)
         {
-            var updateView = new UpdateView();
-            var updateViewModel = new UpdateViewModel((Client)client);
-            updateView.DataContext = updateViewModel;
-            updateView.Show();
+            _windowManager.ShowDialog(new UpdateViewModel((Client) client));
         }
 
     }

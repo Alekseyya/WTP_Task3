@@ -14,6 +14,7 @@ namespace DAL
         private static string _connectionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=WPFDb;Trusted_Connection=True;";
 
         private static Singleton _instance =null;
+        private static readonly object padlock = new object();
 
         protected Singleton()
         {
@@ -27,13 +28,15 @@ namespace DAL
         }
         public static Singleton Instance()
         {
-
-            if (_instance == null)
+            lock (padlock)
             {
-                _instance = new Singleton();
-                
+                if (_instance == null)
+                {
+                    _instance = new Singleton();
+
+                }
+                return _instance;
             }
-            return _instance;
         }
     }
 }
