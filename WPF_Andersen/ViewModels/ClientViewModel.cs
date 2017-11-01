@@ -13,35 +13,38 @@ using System.Windows.Input;
 using Caliburn.Micro;
 
 using Model.DataContract;
+using WPF_Andersen.ViewModels;
+using WPF_Andersen.Views;
 
 namespace WPF_Andersen
 {
-    public class ClientViewModel : PropertyChangedEvent
+    public class ClientViewModel : PropertyChangedBase
     {
         private Client _selectedClient;
-        private ICommand _addMember;
-        private ICommand _deleteMember;
-        private ICommand _cancelCommand;
+        private bool _updateButtonClick = false;
 
         public CancellationTokenSource tokenSource;
         private CancellationToken token;
+        private Client _newClient;
 
-        private string _firstName;
-        private string _lastName;
-        private int _age = 0;
+        private bool _isLoaded; //--- нужен для обновления ссылки
 
-        private Client _clientTest;
-
-        public Client ClientTest
+        public ClientViewModel()
         {
-            get { return _clientTest; }
+            ResetSourceAndToken();
+            NewClient = new Client();
+            NewClient.OnValidateProperty += new ValidateProperty(ValidateFirstName);
+
+        }
+        public Client NewClient
+        {
+            get { return _newClient; }
             set
             {
-                _clientTest = value;
-                OnPropertyChanged();
+                _newClient = value;
+                NotifyOfPropertyChange(()=> NewClient);
             }
         }
-
 
         private ObservableCollection<Client> _clients;
         public ObservableCollection<Client> Clients
@@ -50,7 +53,7 @@ namespace WPF_Andersen
             set
             {
                 _clients = value;
-                OnPropertyChanged();
+                NotifyOfPropertyChange(() => Clients);
             }
         }
 
@@ -60,47 +63,9 @@ namespace WPF_Andersen
             set
             {
                 _selectedClient = value;
-                OnPropertyChanged();
+                NotifyOfPropertyChange(() => SelectedClient);
             }
         }
-
-        public ICommand DeleteMember
-        {
-            get
-            {
-                if (_deleteMember == null)
-                {
-                    Delete();
-                }
-                return _deleteMember;
-            }
-        }
-
-        public ICommand AddMember
-        {
-            get
-            {
-                if (_addMember == null)
-                {
-                    Add();
-                }
-                return _addMember;
-            }
-        }
-
-        public ICommand CancelCommand
-        {
-            get
-            {
-                if (_cancelCommand == null)
-                {
-                    Cancel();
-                }
-                return _cancelCommand;
-            }
-        }
-
-        private bool _isLoaded; //--- нужен для обновления ссылки
 
         public bool IsLoaded
         {
@@ -108,24 +73,51 @@ namespace WPF_Andersen
             set
             {
                 _isLoaded = value;
-                OnPropertyChanged();
+                NotifyOfPropertyChange(() => IsLoaded);
             }
         }
 
         public void Cancel()
         {
-            _cancelCommand = new RelayCommand(obj =>
-            {
-                tokenSource.Cancel();
-            });
+            tokenSource.Cancel();
         }
 
-        public ClientViewModel()
+        public async void AddClient()
         {
-            ResetSourceAndToken();
-            _clientTest = new Client();
-            _clientTest.OnValidateProperty += new ValidateProperty(ValidateFirstName);
+            var client = new Client()
+            {
+                FirstName = NewClient.FirstName,
+                LastName = NewClient.LastName,
+                Age = NewClient.Age
+            };
+            //_clientTest.OnValidateProperty();
+            await AddMemberOnDatabase(client);
+            await Load();
+        }
 
+        public async void DeleteClient(Client selectedClient)
+        {
+            //Client client = obj as Client;
+            if (selectedClient != null)
+            {
+                await DeleteMemberOnDatabase(selectedClient);
+            }
+        }
+        
+        public async void Update()
+        {
+            if (!_updateButtonClick)
+            {
+                _updateButtonClick = true;
+                await Load();
+            }
+            else
+            {
+                tokenSource.Cancel();
+                if (tokenSource.IsCancellationRequested)
+                    ResetSourceAndToken();
+                await Load();
+            }
         }
 
         public string ValidateFirstName(string propertyName)
@@ -147,21 +139,7 @@ namespace WPF_Andersen
             tokenSource = new CancellationTokenSource();
             token = tokenSource.Token;
         }
-        public void Add()
-        {
-            _addMember = new RelayCommand(async obj =>
-            {
-                var client = new Client()
-                {
-                    FirstName = ClientTest.FirstName,
-                    LastName = ClientTest.LastName,
-                    Age = ClientTest.Age
-                };
-                //_clientTest.OnValidateProperty();
-                await AddMemberOnDatabase(client);
-                await Load();
-            });
-        }
+        
 
         public async Task AddMemberOnDatabase(Client client)
         {
@@ -182,18 +160,7 @@ namespace WPF_Andersen
                     MessageBox.Show("Такой пользователь уже существует");
             });
         }
-
-        public void Delete()
-        {
-            _deleteMember = new RelayCommand(async obj =>
-            {
-                Client client = obj as Client;
-                if (client != null)
-                {
-                    await DeleteMemberOnDatabase(client);
-                }
-            });
-        }
+        
 
         public async Task DeleteMemberOnDatabase(Client client)
         {
@@ -253,10 +220,10 @@ namespace WPF_Andersen
 
         public void Open(object client)
         {
-            //var updateWindow = new UpdateWindow();
-            //var viewModel = new UpdateViewModel((Client)client);
-            //updateWindow.DataContext = viewModel;
-            //updateWindow.Show();
+            var updateView = new UpdateView();
+            var updateViewModel = new UpdateViewModel((Client)client);
+            updateView.DataContext = updateViewModel;
+            updateView.Show();
         }
 
     }

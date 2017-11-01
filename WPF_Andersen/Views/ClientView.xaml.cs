@@ -15,11 +15,11 @@ namespace WPF_Andersen
             _updateButtonClick = false;
             DataContext = new ClientViewModel();
 
-            DoubleAnimation buttonAnimation = new DoubleAnimation();
-            buttonAnimation.From = UpdateButton.ActualWidth;
-            buttonAnimation.To = 150;
-            buttonAnimation.Duration = TimeSpan.FromSeconds(3);
-            UpdateButton.BeginAnimation(Button.WidthProperty, buttonAnimation);
+            //DoubleAnimation buttonAnimation = new DoubleAnimation();
+            //buttonAnimation.From = UpdateButton.ActualWidth;
+            //buttonAnimation.To = 150;
+            //buttonAnimation.Duration = TimeSpan.FromSeconds(3);
+            //UpdateButton.BeginAnimation(Button.WidthProperty, buttonAnimation);
         }
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)

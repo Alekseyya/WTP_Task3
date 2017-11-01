@@ -9,6 +9,7 @@ namespace WPF_Andersen
         {
             Initialize();
         }
+        //Запускается только один раз
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
             DisplayRootViewFor<ClientViewModel>();

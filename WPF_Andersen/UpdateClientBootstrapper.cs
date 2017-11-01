@@ -11,10 +11,10 @@ namespace WPF_Andersen
 {
     public class UpdateClientBootstrapper : BootstrapperBase
     {
-        public UpdateClientBootstrapper()
-        {
-            Initialize();
-        }
+        //public UpdateClientBootstrapper()
+        //{
+        //    Initialize();
+        //}
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
             DisplayRootViewFor<UpdateViewModel>();
