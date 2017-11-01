@@ -134,9 +134,9 @@
     <Compile Include="Tree\NodeList.cs" />
     <Compile Include="Tree\SuperNode.cs" />
     <Compile Include="UpdateClientBootstrapper.cs" />
-    <Compile Include="UpdateViewModel.cs" />
-    <Compile Include="UpdateWindow.xaml.cs">
-      <DependentUpon>UpdateWindow.xaml</DependentUpon>
+    <Compile Include="ViewModels\UpdateViewModel.cs" />
+    <Compile Include="Views\UpdateView.xaml.cs">
+      <DependentUpon>UpdateView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -154,7 +154,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UpdateWindow.xaml">
+    <Page Include="Views\UpdateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

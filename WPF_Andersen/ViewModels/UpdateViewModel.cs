@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using Caliburn.Micro;
 using Model.DataContract;
 using Model.Entities;
-using WPF_Andersen.Tree;
 
-namespace WPF_Andersen
+namespace WPF_Andersen.ViewModels
 {
     public class UpdateViewModel : PropertyChangedBase
     {
