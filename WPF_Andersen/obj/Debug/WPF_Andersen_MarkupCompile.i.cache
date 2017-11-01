@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Work\Andersen\WPF_Tast3\WPF_Andersen\App.xaml
-3-1407922407
+31969929105
 
-25-1176798248
+251807635990
 85-490784343
-MainWindow.xaml;Style\StyleFromUpdateWindow.xaml;Views\UpdateView.xaml;
+Views\ClientView.xaml;Style\StyleFromUpdateWindow.xaml;Views\UpdateView.xaml;
 
 True
 

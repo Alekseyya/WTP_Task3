@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Caliburn.Micro;
@@ -11,27 +13,6 @@ namespace WPF_Andersen.ViewModels
     {
         #region Рабочий код
         private Client _selectedClient;
-        private ICommand _updateMember;
-
-        private string _myText = "1111111111";
-
-        public string MyText
-        {
-            get
-            {
-                return _myText;
-            }
-            set
-            {
-                _myText = value;
-                NotifyOfPropertyChange(()=> MyText);
-            }
-        }
-
-        public void IncrementCount()
-        {
-            MyText = MyText + "2";
-        }
 
 
         public Client SelectedClient
@@ -43,26 +24,13 @@ namespace WPF_Andersen.ViewModels
                 //OnPropertyChanged();
             }
         }
+       
 
-        public ICommand UpdateMember
+        public async void Update()
         {
-            get
-            {
-                if (_updateMember == null)
-                {
-                    Update();
-                }
-                return _updateMember;
-            }
-        }
-
-        public void Update()
-        {
-            _updateMember = new RelayCommand(async obj =>
-            {
-                await UpdateMemberOnDatabase();
-                MessageBox.Show("Update competed");
-            });
+            await UpdateMemberOnDatabase();
+            MessageBox.Show("Update competed");
+            
         }
 
         public async Task UpdateMemberOnDatabase()
@@ -92,7 +60,7 @@ namespace WPF_Andersen.ViewModels
 
         public UpdateViewModel()
         {
-
+            
         }
     }
     //public class UpdateViewModel : PropertyChangedEvent

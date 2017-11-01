@@ -116,7 +116,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ClientViewModel.cs" />
+    <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ClientBootstrapper.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\SimpleConverter.cs" />
@@ -138,7 +138,7 @@
     <Compile Include="Views\UpdateView.xaml.cs">
       <DependentUpon>UpdateView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\ClientView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -146,8 +146,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Views\ClientView.xaml.cs">
+      <DependentUpon>ClientView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Style\StyleFromUpdateWindow.xaml">

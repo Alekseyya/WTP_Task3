@@ -6,10 +6,10 @@ using System.Windows.Media.Animation;
 
 namespace WPF_Andersen
 {
-    public partial class MainWindow : Window
+    public partial class ClientView : Window
     {
         private bool _updateButtonClick;
-        public MainWindow()
+        public ClientView()
         {
             InitializeComponent();
             _updateButtonClick = false;
