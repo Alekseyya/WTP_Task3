@@ -96,12 +96,12 @@ namespace WPF_Andersen
         }
         
 
-        public async void DeleteClient(Client selectedClient)
+        public async void DeleteClient()
         {
-            //Client client = obj as Client;
-            if (selectedClient != null)
+            var client = SelectedClient;
+            if (client != null)
             {
-                await DeleteMemberOnDatabase(selectedClient);
+                await DeleteMemberOnDatabase(client);
             }
         }
         

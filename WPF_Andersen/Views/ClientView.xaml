@@ -53,16 +53,9 @@
                         Width="30" Height="30"
                         HorizontalAlignment="Center"></Button>
                 <Button x:Name="DeleteClient"
-                        cal:Message.Attach ="[Event Click] = [Action DeleteClient($dataContext)]"
+                        cal:Message.Attach ="[Event Click] = [Action DeleteClient]"
                         Content="DeleteMember" 
                         Width="60" Height="30" HorizontalAlignment="Right">
-                    <!--<i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <cal:ActionMessage MethodName="DeleteClient">
-                                <cal:Parameter Value="{Binding SelectedClient}" />
-                            </cal:ActionMessage>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>-->
                 </Button>
             </Grid>
            
