@@ -36,6 +36,12 @@ namespace WPF_Andersen
             }
         }
 
+        public void IncrementCount()
+        {
+            MyText = MyText + "2";
+        }
+
+
         public Client SelectedClient
         {
             get { return _selectedClient; }
