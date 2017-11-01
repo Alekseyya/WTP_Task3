@@ -81,3 +81,10 @@ C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Hosting.pdb
 C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Services.pdb
 C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Dapper.dll
 C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Dapper.xml
+C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Caliburn.Micro.dll
+C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Caliburn.Micro.Platform.Core.dll
+C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Caliburn.Micro.Platform.dll
+C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Caliburn.Micro.xml
+C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Caliburn.Micro.Platform.xml
+C:\Work\Andersen\WPF_Tast3\WPF_Andersen\bin\Debug\Caliburn.Micro.Platform.Core.xml
+C:\Work\Andersen\WPF_Tast3\WPF_Andersen\obj\Debug\App.baml

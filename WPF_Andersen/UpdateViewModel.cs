@@ -8,17 +8,33 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using Caliburn.Micro;
 using Model.DataContract;
 using Model.Entities;
 using WPF_Andersen.Tree;
 
 namespace WPF_Andersen
 {
-    public class UpdateViewModel : PropertyChangedEvent
+    public class UpdateViewModel : PropertyChangedBase
     {
         #region Рабочий код
         private Client _selectedClient;
         private ICommand _updateMember;
+
+        private string _myText = "1111111111";
+
+        public string MyText
+        {
+            get
+            {
+                return _myText;
+            }
+            set
+            {
+                _myText = value;
+                NotifyOfPropertyChange(()=> MyText);
+            }
+        }
 
         public Client SelectedClient
         {
@@ -26,7 +42,7 @@ namespace WPF_Andersen
             set
             {
                 _selectedClient = value;
-                OnPropertyChanged();
+                //OnPropertyChanged();
             }
         }
 
@@ -46,7 +62,7 @@ namespace WPF_Andersen
         {
             _updateMember = new RelayCommand(async obj =>
             {
-                 await UpdateMemberOnDatabase();
+                await UpdateMemberOnDatabase();
                 MessageBox.Show("Update competed");
             });
         }
@@ -78,7 +94,74 @@ namespace WPF_Andersen
 
         public UpdateViewModel()
         {
-            
+
         }
     }
+    //public class UpdateViewModel : PropertyChangedEvent
+    //{
+    //    #region Рабочий код
+    //    private Client _selectedClient;
+    //    private ICommand _updateMember;
+
+    //    public Client SelectedClient
+    //    {
+    //        get { return _selectedClient; }
+    //        set
+    //        {
+    //            _selectedClient = value;
+    //            OnPropertyChanged();
+    //        }
+    //    }
+
+    //    public ICommand UpdateMember
+    //    {
+    //        get
+    //        {
+    //            if (_updateMember == null)
+    //            {
+    //                Update();
+    //            }
+    //            return _updateMember;
+    //        }
+    //    }
+
+    //    public void Update()
+    //    {
+    //        _updateMember = new RelayCommand(async obj =>
+    //        {
+    //             await UpdateMemberOnDatabase();
+    //            MessageBox.Show("Update competed");
+    //        });
+    //    }
+
+    //    public async Task UpdateMemberOnDatabase()
+    //    {
+    //        await Task.Run(() =>
+    //        {
+    //            using (var service = new ClientService.ClientServiceClient())
+    //            {
+    //                var client = SelectedClient;
+    //                var contractClient = new ClientContract()
+    //                {
+    //                    FirstName = client.FirstName,
+    //                    LastName = client.LastName,
+    //                    Age = client.Age
+    //                };
+    //                service.UpdateClient(contractClient);
+    //            }
+    //        });
+    //    }
+
+    //    public UpdateViewModel(Client client)
+    //    {
+    //        SelectedClient = client;
+    //    }
+    //    #endregion
+
+
+    //    public UpdateViewModel()
+    //    {
+
+    //    }
+    //}
 }

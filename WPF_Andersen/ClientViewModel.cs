@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Caliburn.Micro;
 
 using Model.DataContract;
 
@@ -31,14 +32,16 @@ namespace WPF_Andersen
 
         private Client _clientTest;
 
-        public Client ClientTest{
+        public Client ClientTest
+        {
             get { return _clientTest; }
             set
             {
                 _clientTest = value;
                 OnPropertyChanged();
-            } }
-        
+            }
+        }
+
 
         private ObservableCollection<Client> _clients;
         public ObservableCollection<Client> Clients
@@ -73,8 +76,10 @@ namespace WPF_Andersen
             }
         }
 
-        public ICommand AddMember {
-            get {
+        public ICommand AddMember
+        {
+            get
+            {
                 if (_addMember == null)
                 {
                     Add();
@@ -102,7 +107,7 @@ namespace WPF_Andersen
             get { return _isLoaded; }
             set
             {
-                _isLoaded= value;
+                _isLoaded = value;
                 OnPropertyChanged();
             }
         }
@@ -119,8 +124,8 @@ namespace WPF_Andersen
         {
             ResetSourceAndToken();
             _clientTest = new Client();
-            _clientTest.OnValidateProperty +=  new ValidateProperty(ValidateFirstName);
-            
+            _clientTest.OnValidateProperty += new ValidateProperty(ValidateFirstName);
+
         }
 
         public string ValidateFirstName(string propertyName)
@@ -152,12 +157,12 @@ namespace WPF_Andersen
                     LastName = ClientTest.LastName,
                     Age = ClientTest.Age
                 };
-               // _clientTest.OnValidateProperty();
+                //_clientTest.OnValidateProperty();
                 await AddMemberOnDatabase(client);
                 await Load();
             });
         }
-        
+
         public async Task AddMemberOnDatabase(Client client)
         {
             await Task.Run(() =>
@@ -171,9 +176,9 @@ namespace WPF_Andersen
                         LastName = client.LastName,
                         Age = client.Age
                     };
-                   flag = service.AddClient(clientContract);
+                    flag = service.AddClient(clientContract);
                 }
-                if(!flag)
+                if (!flag)
                     MessageBox.Show("Такой пользователь уже существует");
             });
         }
@@ -197,13 +202,13 @@ namespace WPF_Andersen
                 var aa = client;
                 using (var service = new ClientService.ClientServiceClient())
                 {
-                    
+
                     service.DeleteClient(client.Id);
                 }
             });
             Clients.Remove(client);
         }
-       
+
         public async Task Load()
         {
             Stopwatch sw = new Stopwatch();
@@ -212,7 +217,7 @@ namespace WPF_Andersen
             IsLoaded = true;
             sw.Stop();
             TimeSpan ts = sw.Elapsed;
-            
+
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
@@ -222,7 +227,7 @@ namespace WPF_Andersen
         {
             await Task.Run(() =>
             {
-                //Thread.Sleep(5000);
+                Thread.Sleep(5000);
                 if (token.IsCancellationRequested)
                 {
                     MessageBox.Show("Операция отменена");
@@ -253,6 +258,6 @@ namespace WPF_Andersen
             updateWindow.DataContext = viewModel;
             updateWindow.Show();
         }
-        
+
     }
 }
